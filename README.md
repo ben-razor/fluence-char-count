@@ -59,4 +59,5 @@ Within the Docker Container, create a new workspace and pull in this repository:
 cd /workspaces
 mkdir new_services
 cd new_services
+git clone git@github.com:ben-razor/fluence-char-count.git
 ```

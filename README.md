@@ -36,4 +36,15 @@ fldist --node-id 12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e \
        --ms artifacts/hello_world.wasm:configs/hello_world_cfg.json \
        --name hello-world
 
+# This returns a service id to interact with
+service id: 51c4c9a4-2c0f-432f-a7a2-6293c4b57ee9
+service created successfully
+```
+
+### Fluence Developer Hub
+
+The deployed service is listed with others on the [Fluence Developer Hub](https://dash.fluence.dev/)
+
+```
+hello-world 51c4c9a4-2c0f-432f-a7a2-6293c4b57ee9 12D3KooW...7P5h45e /ip4/164.90.171.139/tcp/7770
 ```

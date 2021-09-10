@@ -23,3 +23,16 @@ Available tools:
     $ marine repl      – run wasm services locally  
     $ aqua-cli         – compile Aqua to AIR + Typescript  
     $ fldist           – deploy & query services  
+
+### Deploying the HelloWorld example
+```bash
+# list available network peers
+fldist env
+
+# Then we can deploy to a selected peer id
+fldist --node-id 12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e \
+       new_service \
+       --ms artifacts/hello_world.wasm:configs/hello_world_cfg.json \
+       --name hello-world
+
+```

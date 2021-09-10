@@ -53,11 +53,17 @@ hello-world 51c4c9a4-2c0f-432f-a7a2-6293c4b57ee9 12D3KooW...7P5h45e /ip4/164.90.
 
 The task is to extend the simple hello world example to add a character count to sent messages.
 
-Within the Docker Container, create a new workspace and pull in this repository:
+Within the Docker Container, prepare the version control for the examples code.
 
 ```bash
-cd /workspaces
-mkdir new_services
-cd new_services
-git clone git@github.com:ben-razor/fluence-char-count.git
+cd /workspaces/devcontainer/examples
+rm -r ./.git
+git init
+git remote add origin git@github.com:ben-razor/Fluence-Service.git
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
 ```
+
+

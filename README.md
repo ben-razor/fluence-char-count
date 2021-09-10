@@ -117,3 +117,24 @@ Using the following command we can test that our service is working as expected 
 ```bash
 cargo +nightly test --release
 ```
+
+Once the service is built and the tests pass, we are ready to deploy the service to Fluence.
+
+We can gather a list of test peers using the command:
+
+```bash
+fldist env
+```
+
+We choose the top entry from the list for the deployment and use the node id with the fldist deployment command:
+
+```bash
+fldist --node-id 12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e \
+       new_service \
+       --ms artifacts/char_count.wasm:configs/char_count_cfg.json \
+       --name char-count-br
+```
+
+This returned the service id 9454c078-1b68-4ae1-bb30-b82690d5fec0 which we can use later to interact with the service. (Your deployed service id will be different, or you can use this one for performing front end tests).
+
+

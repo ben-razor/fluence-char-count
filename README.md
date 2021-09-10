@@ -156,6 +156,23 @@ Firstly we change the service id and peer id to match those returned when we dep
 
 Secondly, we refactor all references related to hello world to char count versions.
 
+The most important change is that we will now need to pass through our message (messageToSend) and need to update the interface to support this:
+
+```TypeScript
+func countChars(messageToSend: string, targetPeerId: PeerId, targetRelayPeerId: PeerId) -> string:
+    -- execute computation on a Peer in the network
+    on charCountNodePeerId:
+        CharCount charCountServiceId
+        comp <- CharCount.char_count(messageToSend)
+
+    -- send the result to target browser in the background
+    co on targetPeerId via targetRelayPeerId:
+        res <- CharCountPeer.char_count(messageToSend)
+
+    -- send the result to the initiator
+    <- comp.reply
+```
+
 We must now run the aqua compiler which processes the Aqua code and generates a typescript file in src/_aqua/getting-started.ts that we can use in our web app.
 
 ```bash
@@ -166,5 +183,26 @@ aqua --input ./aqua/getting-started.aqua --output ./src/_aqua/
 
 Finally we need to update the front end code to interact with our new character count service via the interfaces defined in the Aqua file.
 
-The front end code is found in the src/App.tsx file.
+The front end code is found in the src/App.tsx file. For this simplified application this mostly requires changing hello and hello world variable names to their character count alternatives that we updated in the getting-started.aqua file.
 
+We also add a message box so that we can send our custom messages across so that we can now say more than a simple hello.
+
+### Running The Updated Application
+
+The application is started by running:
+
+```
+npm start
+```
+
+We are presented with a list of relays (you can choose any). Once this is selected we fire up (or get a friend to fire up) another browser window and do the same.
+
+Next we fire off our amazing message to the other peer id:
+
+We get back out message with the characters counted!
+
+And as a bonus our message gets sent through to the other client like magic!
+
+### Wrapping Up
+
+And that's it! I hope this tutorial will help you to make some amazing applications using fluence.

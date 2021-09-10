@@ -118,6 +118,8 @@ Using the following command we can test that our service is working as expected 
 cargo +nightly test --release
 ```
 
+### Deployment To Fluence
+
 Once the service is built and the tests pass, we are ready to deploy the service to Fluence.
 
 We can gather a list of test peers using the command:

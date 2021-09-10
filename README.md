@@ -66,4 +66,54 @@ git branch -M main
 git push -u origin main
 ```
 
+### Extending The Service
 
+The service that will be deployed resides in the quickstart/3-browser-to-service folder. We will need to modify the code in src/main.rs to add a character count to the message reply.
+
+```rust
+#[marine]
+pub struct CharCount {
+    pub msg: String,
+    pub reply: String,
+}
+
+#[marine]
+pub fn char_count(message: String) -> CharCount {
+    let num_chars = message.chars().count();
+    let _msg;
+    let _reply;
+
+    if num_chars < 1 {
+        _msg = format!("Your message was empty");
+        _reply = format!("Your message has 0 characters");
+    } else {
+        _msg = format!("Message: {}", message);
+        _reply = format!("Your message {} has {} character(s)", message, num_chars);
+    }
+
+    CharCount {
+        msg: _msg,
+        reply: _reply
+    }
+}
+```
+
+
+
+> Before building we must refactor all referencies to hello_world, hello and HelloWorld in the configs directory and Cargo.toml file to use the new char_count module, char_count function name and CharCount struct.
+
+Once this is done we build the service. This will create a char_count.wasm file in ./artifacts that will be deployed later.
+
+```bash
+cd quickstart
+cd 2-hosted-services
+./scripts/build.sh
+```
+
+We update the tests in main.rs to work with the new service. We enter a special character in the string to ensure that special characters are being counted correctly. 
+
+Using the following command we can test that our service is working as expected before deployment:
+
+```bash
+cargo +nightly test --release
+```

@@ -137,6 +137,26 @@ fldist --node-id 12D3KooWSD5PToNiLQwKDXsu8JSysCwUt8BVUJEqCHcDe7P5h45e \
        --name char-count-br
 ```
 
-This returned the service id 9454c078-1b68-4ae1-bb30-b82690d5fec0 which we can use later to interact with the service. (Your deployed service id will be different, or you can use this one for performing front end tests).
+This returned the service id **9454c078-1b68-4ae1-bb30-b82690d5fec0** which we can use later to interact with the service. (Your deployed service id will be different, or you can use this one for performing front end tests).
 
+### Fluence Developer Hub
+
+You can ensure your service has been deployed by viewing the [Fluence Developer Hub](https://dash.fluence.dev/)
+
+The deployed contract used in this tutorial can be viewed at:
+[Character Count Service](https://dash.fluence.dev/blueprint/5c187205fef8d3306dcf6ffd73efd623a8774d3adc698e6244bc11e81d704ba6)
+
+### Updating The Aqua Code 
+
+With the character count contract deployed, we move to the front end code. This is located in the quickstart/3-browser-to-service directory.
+
+Our changes focus on the getting-started.aqua file. [Aqua](https://doc.fluence.dev/docs/knowledge_aquamarine/hll) is a simplified language for defining peer-to-peer applications with Fluence.
+
+We need to change the service id and peer id to match those returned when we deployed the contract. Secondly, we refactor all references related to hello world to char count versions.
+
+### Updating The Front End Code
+
+Finally we need to update the front end code to interact with our new character count service via the interfaces defined in the Aqua file.
+
+The front end code is found in the src/App.tsx file.
 

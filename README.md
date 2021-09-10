@@ -1,2 +1,3 @@
-# fluence-char-count
-Character count application using Fluence
+# Fluence Character Counter
+
+A character count application using Fluence.

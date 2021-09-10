@@ -48,3 +48,15 @@ The deployed service is listed with others on the [Fluence Developer Hub](https:
 ```
 hello-world 51c4c9a4-2c0f-432f-a7a2-6293c4b57ee9 12D3KooW...7P5h45e /ip4/164.90.171.139/tcp/7770
 ```
+
+### Character Count Extension
+
+The task is to extend the simple hello world example to add a character count to sent messages.
+
+Within the Docker Container, create a new workspace and pull in this repository:
+
+```bash
+cd /workspaces
+mkdir new_services
+cd new_services
+```

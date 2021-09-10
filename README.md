@@ -152,7 +152,15 @@ With the character count contract deployed, we move to the front end code. This 
 
 Our changes focus on the getting-started.aqua file. [Aqua](https://doc.fluence.dev/docs/knowledge_aquamarine/hll) is a simplified language for defining peer-to-peer applications with Fluence.
 
-We need to change the service id and peer id to match those returned when we deployed the contract. Secondly, we refactor all references related to hello world to char count versions.
+Firstly we change the service id and peer id to match those returned when we deployed the contract.
+
+Secondly, we refactor all references related to hello world to char count versions.
+
+We must now run the aqua compiler which processes the Aqua code and generates a typescript file in src/_aqua/getting-started.ts that we can use in our web app.
+
+```bash
+aqua --input ./aqua/getting-started.aqua --output ./src/_aqua/
+```
 
 ### Updating The Front End Code
 
